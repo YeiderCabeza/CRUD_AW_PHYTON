@@ -1,0 +1,16 @@
+{% for usuario in usuarios %}
+<form method="post" action="/write" enctype="multipart/form-data">
+
+    <input type="hidden" name="txtId" id="txtId" value="{{usuario[0]}}"> <br>
+    Nombres :
+    <input type="text" name="txtNombres" id="txtNombres" value="{{usuario[1]}}"> <br>
+    Apellidos :
+    <input type="text" name="txtApellidos" id="txtApellidos" value="{{usuario[2]}}"> <br>
+    Correo :
+    <input type="email" name="txtCorreo" id="txtCorreo" value="{{usuario[4]}}"> <br>
+    Telefono :
+    <input type="number" name="txtTelefono" id="txtTelefono" value="{{usuario[3]}}"> <br> <br>
+
+    <input type="submit" value="Editar">
+</form>
+{% endfor %}
