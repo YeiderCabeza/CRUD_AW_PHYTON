@@ -1,17 +1,14 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
-    <title>inicio</title>
-</head>
-<body>
-
+    {% include 'header.html' %}
+<br>
+    <a href="{{url_for('create')}}" class="btn btn-success">
+        Registrar un nuevo contacto
+    </a>
+<br> <br>
     <table class="table table-light">
         <thead class="thead-light">
             <tr>
                 <th>#</th>
+                <th>Imagen</th>
                 <th>Nombres</th>
                 <th>Apellidos</th>
                 <th>Telefono</th>
@@ -23,16 +20,19 @@
             {% for usuario in usuarios %}
             <tr>
                 <td>{{usuario[0]}}</td>
+                <td>
+                    <img class="img-thumbnail" width="100" src="imgns/{{usuario[5]}}" alt="">
+                </td>
                 <td>{{usuario[1]}}</td>
                 <td>{{usuario[2]}}</td>
                 <td>{{usuario[3]}}</td>
                 <td>{{usuario[4]}}</td>
-                <td> <a href="/edit/{{usuario[0]}}"> Editar</a> | 
-                    <a href="/delete/{{usuario[0]}}">Borrar</a></td>
+                <td> 
+                    <a  class="btn btn-warning" href="/edit/{{usuario[0]}}"> Editar</a> | 
+                    <a  onclick="return confirm('desea eliminar el ususrio?')" class="btn btn-danger" href="/delete/{{usuario[0]}}">Borrar</a>
+                </td>
             </tr>
             {% endfor %}
         </tbody>
     </table>
-
-</body>
-</html>
+    {% include 'footer.html' %}
